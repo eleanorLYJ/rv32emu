@@ -104,6 +104,10 @@ jobs:
         CC: ${{ steps.install_cc.outputs.cc }}
       run: |
             make distclean && make ENABLE_GDBSTUB=1 gdbstub-test -j$(nproc)
+    - name: Setup swap space
+      uses: get-bridge/swap-space-action@v1
+      with: 
+        swap-size-mb: 8192
     - name: JIT test
       env:
         CC: ${{ steps.install_cc.outputs.cc }}
