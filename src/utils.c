@@ -34,7 +34,7 @@
 #if !defined(HAVE_POSIX_TIMER)
 static inline uint64_t mult_frac(uint64_t x, uint64_t n, uint64_t d)
 {
-    const uint64_t q = x / d;
+    const uint64_t q = x / d; 
     const uint64_t r = x % d;
 
     return q * n + r * n / d;
