@@ -53,7 +53,7 @@ bool need_handle_signal = false;
 
 static void rv_trap_default_handler(riscv_t *rv)
 {
-    rv->csr_mepc += rv->compressed ? 2 : 4;
+    rv->csr_mepc += rv->compressed ? 2 : 4; 
     rv->PC = rv->csr_mepc; /* mret */
 }
 
