@@ -48,7 +48,7 @@ static bool need_clear_block_map = false;
 static uint32_t reloc_enable_mmu_jalr_addr;
 static bool reloc_enable_mmu = false;
 bool need_retranslate = false; 
-bool need_handle_signal = false;
+bool need_handle_signal = false; 
 #endif
 
 static void rv_trap_default_handler(riscv_t *rv)
