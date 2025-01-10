@@ -79,6 +79,7 @@ define verify
             )), \
             (# SHA1 value match, do nothing) \
     ))
+    -$(RM) $(SHA1_FILE1) $(SHA1_FILE2)
 endef
 
 # For each external target, the following must be defined in advance:
