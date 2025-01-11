@@ -127,12 +127,22 @@ else
 endif
 endif
 
+CURRENT_TIME := $(shell date +%s)
+ONE_DAY := 86400
 fetch-checksum:
+	@echo "LATEST_RELEASE=$(LATEST_RELEASE)"
 ifeq ($(call has, PREBUILT), 1)
 	$(Q)$(PRINTF) "Fetching SHA-1 of prebuilt binaries ... "
 ifeq ($(call has, SYSTEM), 1)
-	$(Q)wget -q -O $(BIN_DIR)/sha1sum-linux-image https://github.com/sysprog21/rv32emu-prebuilt/releases/download/$(LATEST_RELEASE)/sha1sum-linux-image
-	$(Q)$(call notice, [OK])
+	@if [ -f $(BIN_DIR)/sha1sum-linux-image ]; then \
+		FILE_MOD_TIME=$$(stat -c %Y $(BIN_DIR)/sha1sum-linux-image 2>/dev/null || echo 0); \
+		TIME_DIFF=$$(expr $(CURRENT_TIME) - $$FILE_MOD_TIME); \
+		if [ $$TIME_DIFF -ge $(ONE_DAY) ]; then \
+			wget -O $(BIN_DIR)/sha1sum-linux-image https://github.com/sysprog21/rv32emu-prebuilt/releases/download/$(LATEST_RELEASE)/sha1sum-linux-image; \
+		fi \
+	else \
+		wget -O $(BIN_DIR)/sha1sum-linux-image https://github.com/sysprog21/rv32emu-prebuilt/releases/download/$(LATEST_RELEASE)/sha1sum-linux-image; \
+	fi && $(PRINTF) "\033[32m[OK]\033[0m\n"
 else
 	$(Q)wget -q -O $(BIN_DIR)/sha1sum-linux-x86-softfp https://github.com/sysprog21/rv32emu-prebuilt/releases/download/$(LATEST_RELEASE)/sha1sum-linux-x86-softfp
 	$(Q)wget -q -O $(BIN_DIR)/sha1sum-riscv32 https://github.com/sysprog21/rv32emu-prebuilt/releases/download/$(LATEST_RELEASE)/sha1sum-riscv32
