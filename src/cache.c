@@ -28,7 +28,7 @@ struct hlist_node {
 };
 
 typedef struct {
-    void *value;
+    void *value; 
     bool alive; /* indicates whether this cache is alive or a history of evicted
                    cache in hash map */
     uint32_t key;
