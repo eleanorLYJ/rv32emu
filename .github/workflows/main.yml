@@ -39,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        compiler: [gcc-latest, clang-latest]
+        compiler: [gcc, clang]
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
