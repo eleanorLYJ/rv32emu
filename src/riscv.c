@@ -160,7 +160,7 @@ void rv_remap_stdstream(riscv_t *rv, fd_stream_pair_t *fsp, uint32_t fsp_size)
 
         /* store new fd to make the vm_attr_t consistent */
         int new_fd = FILENO(file);
-        assert(new_fd != -1);
+        assert(new_fd != -1); 
 
         if (fd == STDIN_FILENO)
             attr->fd_stdin = new_fd;
