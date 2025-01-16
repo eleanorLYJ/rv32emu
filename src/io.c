@@ -29,7 +29,7 @@ memory_t *memory_new(uint32_t size)
                             MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
     if (data_memory_base == MAP_FAILED) {
         free(mem);
-        return NULL;
+        return NULL; 
     }
 #else
     data_memory_base = malloc(size);
