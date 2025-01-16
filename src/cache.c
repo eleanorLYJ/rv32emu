@@ -25,7 +25,7 @@ struct hlist_head {
 
 struct hlist_node {
     struct hlist_node *next, **pprev;
-};
+}; 
 
 typedef struct {
     void *value;
