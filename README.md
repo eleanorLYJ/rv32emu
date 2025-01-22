@@ -24,7 +24,7 @@ a focus on efficiency and readability.
 
 Features:
 * Fast interpreter for executing the RV32 ISA
-* Comprehensive support for RV32I and M, A, F, C, Zba, Zbb, Zbc, Zbs extensions
+* Comprehensive support for RV32I and M, A, F, C, E, Zba, Zbb, Zbc, Zbs extensions
 * Memory-efficient design
 * Built-in ELF loader
 * Implementation of commonly used newlib system calls
