@@ -33,6 +33,7 @@
 extern "C" {
 #endif
 
+#if !RV32_HAS(EXT_E)
 #define RV_REGS_LIST                                   \
     _(zero) /* hard-wired zero, ignoring any writes */ \
     _(ra)   /* return address */                       \
@@ -66,6 +67,25 @@ extern "C" {
     _(t4)                                              \
     _(t5)                                              \
     _(t6)
+#else
+#define RV_REGS_LIST                                   \
+    _(zero) /* hard-wired zero, ignoring any writes */ \
+    _(ra)   /* return address */                       \
+    _(sp)   /* stack pointer */                        \
+    _(gp)   /* global pointer */                       \
+    _(tp)   /* thread pointer */                       \
+    _(t0)   /* temporary/alternate link register */    \
+    _(t1)   /* temporaries */                          \
+    _(t2)                                              \
+    _(s0) /* saved register/frame pointer */           \
+    _(s1)                                              \
+    _(a0) /* function arguments / return values */     \
+    _(a1)                                              \
+    _(a2) /* function arguments */                     \
+    _(a3)                                              \
+    _(a4)                                              \
+    _(a5)
+#endif
 
 /* RISC-V registers (mnemonics, ABI names)
  *
@@ -96,6 +116,7 @@ enum {
 #define MISA_A (1 << ('A' - 'A'))
 #define MISA_F (1 << ('F' - 'A'))
 #define MISA_C (1 << ('C' - 'A'))
+#define MISA_E (1 << ('E' - 'A'))
 
 /* The mstatus register keeps track of and controls the hart’s current operating
  * state */

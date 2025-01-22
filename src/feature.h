@@ -27,6 +27,11 @@
 #define RV32_FEATURE_EXT_C 1
 #endif
 
+/* RV32E Base Integer Instruction Set */
+#ifndef RV32_FEATURE_EXT_E
+#define RV32_FEATURE_EXT_E 0
+#endif
+
 /* Control and Status Register (CSR) */
 #ifndef RV32_FEATURE_Zicsr
 #define RV32_FEATURE_Zicsr 1
