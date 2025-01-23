@@ -774,7 +774,7 @@ void rv_reset(riscv_t *rv, riscv_word_t pc)
     rv->csr_marchid = RV_MARCHID;
     rv->csr_mimpid = RV_MIMPID;
 #if RV32_HAS(EXT_A)
-    rv->csr_misa |= MISA_A;
+    rv->csr_misa |= MISA_A; 
 #endif
 #if RV32_HAS(EXT_C)
     rv->csr_misa |= MISA_C;
