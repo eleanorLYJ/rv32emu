@@ -24,5 +24,5 @@ make arch-test RISCV_DEVICE=FCZicsr $PARALLEL || exit 1
 make arch-test RISCV_DEVICE=IMZbaZbbZbcZbs $PARALLEL || exit 1
 
 make distclean
-make ENABLE_EXT_E=1 $PARALLEL
+make ENABLE_EXT_E=1 ENABLE_FULL4G=1 $PARALLEL
 make arch-test RISCV_DEVICE=E $PARALLEL || exit 1
