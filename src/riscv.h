@@ -33,60 +33,27 @@
 extern "C" {
 #endif
 
-#if !RV32_HAS(EXT_E)
-#define RV_REGS_LIST                                   \
-    _(zero) /* hard-wired zero, ignoring any writes */ \
-    _(ra)   /* return address */                       \
-    _(sp)   /* stack pointer */                        \
-    _(gp)   /* global pointer */                       \
-    _(tp)   /* thread pointer */                       \
-    _(t0)   /* temporary/alternate link register */    \
-    _(t1)   /* temporaries */                          \
-    _(t2)                                              \
-    _(s0) /* saved register/frame pointer */           \
-    _(s1)                                              \
-    _(a0) /* function arguments / return values */     \
-    _(a1)                                              \
-    _(a2) /* function arguments */                     \
-    _(a3)                                              \
-    _(a4)                                              \
-    _(a5)                                              \
-    _(a6)                                              \
-    _(a7)                                              \
-    _(s2) /* saved register */                         \
-    _(s3)                                              \
-    _(s4)                                              \
-    _(s5)                                              \
-    _(s6)                                              \
-    _(s7)                                              \
-    _(s8)                                              \
-    _(s9)                                              \
-    _(s10)                                             \
-    _(s11)                                             \
-    _(t3) /* temporary register */                     \
-    _(t4)                                              \
-    _(t5)                                              \
-    _(t6)
-#else
-#define RV_REGS_LIST                                   \
-    _(zero) /* hard-wired zero, ignoring any writes */ \
-    _(ra)   /* return address */                       \
-    _(sp)   /* stack pointer */                        \
-    _(gp)   /* global pointer */                       \
-    _(tp)   /* thread pointer */                       \
-    _(t0)   /* temporary/alternate link register */    \
-    _(t1)   /* temporaries */                          \
-    _(t2)                                              \
-    _(s0) /* saved register/frame pointer */           \
-    _(s1)                                              \
-    _(a0) /* function arguments / return values */     \
-    _(a1)                                              \
-    _(a2) /* function arguments */                     \
-    _(a3)                                              \
-    _(a4)                                              \
-    _(a5)
-#endif
-
+#define RV_REGS_LIST                                                     \
+    _(zero) /* hard-wired zero, ignoring any writes */                   \
+    _(ra)   /* return address */                                         \
+    _(sp)   /* stack pointer */                                          \
+    _(gp)   /* global pointer */                                         \
+    _(tp)   /* thread pointer */                                         \
+    _(t0)   /* temporary/alternate link register */                      \
+    _(t1)   /* temporaries */                                            \
+    _(t2)                                                                \
+    _(s0) /* saved register/frame pointer */                             \
+    _(s1)                                                                \
+    _(a0) /* function arguments / return values */                       \
+    _(a1)                                                                \
+    _(a2) /* function arguments */                                       \
+    _(a3)                                                                \
+    _(a4)                                                                \
+    _(a5)                                                                \
+    IIF(RV32_HAS(EXT_E)(, _(a6) _(a7) _(s2) /* saved register */         \
+                        _(s3) _(s4) _(s5) _(s6) _(s7) _(s8) _(s9) _(s10) \
+                            _(s11) _(t3) /* temporary register */        \
+                        _(t4) _(t5) _(t6)))
 /* RISC-V registers (mnemonics, ABI names)
  *
  * There are 32 registers in RISC-V. The program counter is a further register
